@@ -17,7 +17,7 @@ def download_youtube_video():
                 # 用取出來的網址 創造物件
                 youtube_video_object = YouTube(video_url, use_oauth=True)
 
-                # 用物件裡面的功能 取得影片的觀看數、作者還有影片名稱
+                # 用model裡面的功能 取得影片的觀看數、作者還有影片名稱
                 views = youtube_video_object.views
                 author = youtube_video_object.author
                 video_title = youtube_video_object.title
