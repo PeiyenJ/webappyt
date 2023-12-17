@@ -22,7 +22,7 @@ def download_youtube_video():
                 author = youtube_video_object.author
                 video_title = youtube_video_object.title
 
-                # 寫入資料庫
+                # 寫入資料庫,import video, import db
                 new_video = Video(views, author, video_title)
                 db.session.add(new_video)
                 db.session.commit()
@@ -30,12 +30,14 @@ def download_youtube_video():
                 # 下載影片到伺服器
                 get_video = youtube_video_object.streams.get_highest_resolution()
                 
-                # 用戶端下載存放， as_attachment是個附件
+                # 下載存放， attachment 是附件
                 return send_file(get_video.download(), as_attachment=True)
 
         # 如果不是POST 就是GET
         else:
-                # 讀取資料庫
+                # 讀取資料庫,query查詢 all全部
                 videos = Video.query.all()
-                # 把從資料庫讀取出來的資料送到前端
+                # 把讀取出來的資料送到前端呈現
                 return render_template("home.html", videos=videos)
+
+                # 最後回html設定變數

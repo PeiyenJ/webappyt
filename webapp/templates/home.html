@@ -34,7 +34,7 @@
           <th scope="col">觀看數量</th>
         </tr>
       </thead>
-      <!-- 資料庫變數 -->
+      <!-- 設定model變數, {% for in %}迴圈 -->
       <tbody>
         {% for video in videos %}
         <tr>
@@ -42,7 +42,8 @@
           <td>{{video.author}}</td>
           <td>{{video.views}}</td>
         </tr>
-        {% endfor %}
+        <!-- 結束迴圈 endfor -->
+        {% endfor %} 
       </tbody>
     </table>
   </div>
