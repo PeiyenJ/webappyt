@@ -5,6 +5,7 @@ from . import db
 
 home = Blueprint('home',__name__)
 
+# API，預設GET，因此需要增加list方法
 @home.route('/',methods=["GET","POST"])
 
 def download_youtube_video():
@@ -15,7 +16,7 @@ def download_youtube_video():
                 # 用取出來的網址 創造物件
                 youtube_video_object = YouTube(video_url, use_oauth=True)
 
-                # 用這個物件裡面的功能 去取得影片的觀看數、作者還有影片名稱
+                # 用物件裡面的功能 取得影片的觀看數、作者還有影片名稱
                 views = youtube_video_object.views
                 author = youtube_video_object.author
                 video_title = youtube_video_object.title
@@ -35,5 +36,5 @@ def download_youtube_video():
         else:
                    # 讀取資料庫
                 videos = Video.query.all()
-                # 把從資料庫讀取出來的資料送到前端展示
+                # 把從資料庫讀取出來的資料送到前端
                 return render_template("home.html", videos=videos)

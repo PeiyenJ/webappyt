@@ -15,7 +15,7 @@ def create_web_app():
         app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{YOUTUBE_DATABASE}'
         db.init_app(app)
 
-        # 註冊藍圖
+        # 註冊藍圖.引入home模組
         from .home import home
         app.register_blueprint(home, url_prefix='/')
 
